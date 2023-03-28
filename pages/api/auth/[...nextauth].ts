@@ -26,34 +26,39 @@ export default NextAuth({
         },
         password: {
           label: 'Password',
-          type: 'passord'
-        }
+          type: 'passord',
+        },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Email and password required');
         }
 
-        const user = await prismadb.user.findUnique({ where: {
-          email: credentials.email
-        }});
+        const user = await prismadb.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
 
         if (!user || !user.hashedPassword) {
           throw new Error('Email does not exist');
         }
 
-        const isCorrectPassword = await compare(credentials.password, user.hashedPassword);
+        const isCorrectPassword = await compare(
+          credentials.password,
+          user.hashedPassword
+        );
 
         if (!isCorrectPassword) {
           throw new Error('Incorrect password');
         }
 
         return user;
-      }
-    })
+      },
+    }),
   ],
   pages: {
-    signIn: '/auth'
+    signIn: '/auth',
   },
   debug: process.env.NODE_ENV === 'development',
   adapter: PrismaAdapter(prismadb),
@@ -61,5 +66,5 @@ export default NextAuth({
   jwt: {
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 });

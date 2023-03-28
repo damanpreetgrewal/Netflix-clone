@@ -18,31 +18,31 @@ export async function getServerSideProps(context: NextPageContext) {
       redirect: {
         destination: '/auth',
         permanent: false,
-      }
-    }
+      },
+    };
   }
 
   return {
-    props: {}
-  }
+    props: {},
+  };
 }
 
 const Home = () => {
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
-  const {isOpen, closeModal} = useInfoModalStore();
+  const { isOpen, closeModal } = useInfoModalStore();
 
   return (
     <>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
-      <div className="pb-40">
-        <MovieList title="Trending Now" data={movies} />
-        <MovieList title="My List" data={favorites} />
+      <div className='pb-40'>
+        <MovieList title='Trending Now' data={movies} />
+        <MovieList title='My List' data={favorites} />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Home;
