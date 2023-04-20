@@ -1,4 +1,4 @@
-import useSwr from 'swr'
+import useSwr from 'swr';
 
 import fetcher from '@/libs/fetcher';
 
@@ -9,7 +9,7 @@ const useCurrentUser = () => {
     error,
     isLoading,
     mutate,
-  }
+  };
 };
 
 export default useCurrentUser;

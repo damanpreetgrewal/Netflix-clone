@@ -1,4 +1,4 @@
-import useSwr from 'swr'
+import useSwr from 'swr';
 import fetcher from '@/libs/fetcher';
 
 const useMovies = () => {
@@ -11,8 +11,8 @@ const useMovies = () => {
     data,
     error,
     isLoading,
-    mutate
-  }
+    mutate,
+  };
 };
 
 export default useMovies;

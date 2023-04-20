@@ -10,9 +10,9 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
   const router = useRouter();
 
   return (
-    <button 
+    <button
       onClick={() => router.push(`/watch/${movieId}`)}
-      className="
+      className='
         bg-white 
         rounded-md 
         py-1 md:py-2 
@@ -25,12 +25,12 @@ const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
         items-center
         hover:bg-neutral-300
         transition
-        "
-      >
-        <PlayIcon className="w-4 md:w-7 text-black mr-1" />
-        Play
+        '
+    >
+      <PlayIcon className='w-4 md:w-7 text-black mr-1' />
+      Play
     </button>
   );
-}
+};
 
 export default PlayButton;
